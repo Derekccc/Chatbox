@@ -1,0 +1,106 @@
+header {
+    background-color: rgb(176, 176, 180);
+    padding: 4px;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    width: 20px;
+    height: auto;
+}
+
+.cross-line {
+    border-top: 1px solid #ccc;
+}
+
+
+.chat-container-send-btn {
+    width: 100px;
+    margin: 20px auto;
+    padding: 8px 15px;
+    margin-left: auto; 
+    border: none;
+    border-radius: 3px;
+    background-color: #1677df;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selfie {
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.jamie-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.jamie-name {
+    display: inline-block;
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+
+
+
+.chatbox {
+    height: 300px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.user-message {
+    text-align: middle;
+    color: blue;
+}
+
+.bot-message {
+    text-align: left;
+    color: green;
+}
+
+#user-input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
+}
+
