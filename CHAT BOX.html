@@ -4,22 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHAT BOX</title>
-    <link rel="stylesheet" href="mystyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-ggcEhc7xz5FVF73M7OK9vfCGPEyRrOBcALHFqgyZx5hfVzToYRgfk4eavKSjGrqF5gZutrh3n5hA1u2gnaj7Cw==" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="mystyle.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-ggcEhc7xz5FVF73M7OK9vfCGPEyRrOBcALHFqgyZx5hfVzToYRgfk4eavKSjGrqF5gZutrh3n5hA1u2gnaj7Cw==" crossorigin="anonymous" /> -->
+
+<style>
+header {
+    background-color: rgb(176, 176, 180);
+    padding: 4px;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    width: 20px;
+    height: auto;
+}
+
+.cross-line {
+    border-top: 1px solid #ccc;
+}
+
+
+.chat-container-send-btn {
+    width: 100px;
+    margin: 20px auto;
+    padding: 8px 15px;
+    margin-left: auto; 
+    border: none;
+    border-radius: 3px;
+    background-color: #1677df;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selfie {
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.jamie-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.jamie-name {
+    display: inline-block;
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+
+.chatbox {
+    height: 300px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.user-message {
+    text-align: middle;
+    color: blue;
+}
+
+.bot-message {
+    text-align: left;
+    color: green;
+}
+
+#user-input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
+}
+    </style>
+    
 
 </head>
 <body>
     <header>
         <div class="logo-container">
             <p>WELCOME TO CHATBOX</p>
-            <img src="C:\Users\Derek\OneDrive\Pictures\chatboxweb\logo.png" alt="Chatbox Logo" style="max-width: 100%;" height="auto" class="logo">
+            <img src="C:\Users\derek\Pictures\pic\logo.png" alt="Chatbox Logo" style="max-width: 100%;" height="auto" class="logo">
         </div>     
     </header>
 
     <p>Chat Box</p><br>
     <div class="selfie">
-        <img src="C:\Users\Derek\OneDrive\Pictures\chatboxweb\profile.png" alt="Jamie Photo" class="jamie-photo">
-        <h1 class="jamie-name">Jamie</h1>
+        <img src="C:\Users\derek\Pictures\pic\anime.jpg" alt="Jamie Photo" class="jamie-photo">
+        <h1 class="jamie-name">Derek</h1>
     </div>
     <div class="cross-line">
 
@@ -34,5 +141,54 @@
     <script src="script.js"></script>
 
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const chatBox = document.getElementById("chat-box");
+    const userInput = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+
+    
+    function addMessage(message, className) {
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("chat-message", className);
+        messageElement.innerText = message;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight; 
+    }
+
+    
+    function getCurrentDateTime() {
+        const now = new Date();
+        const options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric" };
+        return now.toLocaleDateString("en-US", options);
+    }
+
+    
+    function handleUserInput() {
+        const message = userInput.value.trim();
+        if (message === "") return; 
+        addMessage("You: " + message, "user-message");
+        userInput.value = ""; 
+        
+        addMessage("Jamie: " + message, "bot-message");
+    }
+
+    
+    sendBtn.addEventListener("click", handleUserInput);
+
+    
+    userInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            handleUserInput();
+        }
+    });
+
+    
+    addMessage("Jamie: Welcome! How can I help you?", "bot-message");
+    addMessage("Current date and time: " + getCurrentDateTime(), "bot-message");
+});
+
+</script>
 </body>
 </html>
